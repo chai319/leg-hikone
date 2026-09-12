@@ -490,9 +490,12 @@ a:focus-visible,button:focus-visible{
 .ftr-brand small{font-size:.625rem; font-weight:600; color:var(--aqua-300); letter-spacing:.12em; text-transform:uppercase}
 .copy{font-size:.75rem; color:var(--text-muted); letter-spacing:.04em}
 
-/* ---------------- Reveal animation ---------------- */
-.rv{opacity:0; transform:translateY(16px); transition:opacity .6s var(--ease), transform .6s var(--ease)}
-.rv.in{opacity:1; transform:none}
+/* ---------------- Reveal animation ----------------
+   隠すのは .js-anim（<head>のインラインJSが付与）が付いているときだけ。
+   JSが無効・失敗・停止している環境では要素を隠さず、そのまま読める。 */
+.js-anim .rv{opacity:0; transform:translateY(16px)}
+.js-anim .rv.in{opacity:1; transform:none}
+.rv{transition:opacity .6s var(--ease), transform .6s var(--ease)}
 
 /* ---------------- Reduced motion ---------------- */
 @media (prefers-reduced-motion: reduce){
@@ -500,13 +503,16 @@ a:focus-visible,button:focus-visible{
     animation-duration:.01ms!important; animation-iteration-count:1!important;
     transition-duration:.01ms!important; scroll-behavior:auto!important;
   }
-  .rv{opacity:1!important; transform:none!important}
+  .rv,.js-anim .rv{opacity:1!important; transform:none!important}
 }
 
 /* anchor offset for fixed header */
 [id]{scroll-margin-top:80px}
 html{scroll-behavior:smooth}
 </style>
+<!-- 出現アニメーションを有効化する印。JSが動く環境でのみ要素を隠すため、
+     描画前のここで付与する（JS無効時は隠さない＝全文が読める） -->
+<script>document.documentElement.className+=' js-anim'</script>
 </head>
 <body>
 
@@ -982,6 +988,13 @@ html{scroll-behavior:smooth}
     }
     sweep();
     window.addEventListener('resize', sweep, {passive:true});
+    // 最終保険: rAF や IntersectionObserver が抑制される環境
+    // (バックグラウンドタブ、省電力、プレビュー描画など) でも
+    // 一定時間後に必ず全要素を表示し、内容が消えたままにならないようにする
+    setTimeout(function(){
+      rv.forEach(function(el){ el.classList.add('in'); });
+      rv = [];
+    }, 2500);
   }
 
   /* ---- scroll spy ---- */
