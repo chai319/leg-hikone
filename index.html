@@ -78,7 +78,7 @@ img{display:block; max-width:100%; height:auto}
 a{color:var(--teal-700)}
 h1,h2,h3,h4{color:var(--text-strong); margin:0; font-weight:800; letter-spacing:-.01em; line-height:1.3}
 p{margin:0}
-ul{margin:0; padding:0; list-style:none}
+ul,ol{margin:0; padding:0; list-style:none}
 
 .wrap{width:min(1140px,100% - 2rem); margin-inline:auto}
 @media(min-width:600px){ .wrap{width:min(1140px,100% - 2.5rem)} }
@@ -146,7 +146,7 @@ a:focus-visible,button:focus-visible{
 .nav a.is-active{color:var(--emerald-400)}
 .nav .nav-cta{
   margin-top:1.5rem; border:0; text-align:center; border-radius:var(--r-pill);
-  background:linear-gradient(135deg,var(--teal-600),var(--emerald-400)); color:#04201C;
+  background:linear-gradient(135deg,var(--teal-500),var(--emerald-400)); color:#04201C;
 }
 
 @media(min-width:900px){
@@ -179,10 +179,12 @@ a:focus-visible,button:focus-visible{
   padding:calc(var(--nav-h) + 3rem) 0 4rem; overflow:hidden;
 }
 .hero::before,.hero::after{content:""; position:absolute; inset:0; pointer-events:none}
+/* バナー画像には「LEG彦根」の文字が焼き込まれているため、強めにぼかして
+   H1と二重に読めないようにし、色味のテクスチャとしてだけ使う */
 .hero::before{
   background-image:url(./assets/img/hero-banner.webp);
   background-size:cover; background-position:center;
-  opacity:.17; filter:blur(2px) saturate(.75);
+  opacity:.13; filter:blur(10px) saturate(.7); transform:scale(1.12);
 }
 .hero::after{
   background:
@@ -225,8 +227,10 @@ a:focus-visible,button:focus-visible{
   font-family:var(--head); font-size:1rem; font-weight:700; text-decoration:none;
   border:0; cursor:pointer; transition:transform var(--dur) var(--ease), filter var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
+/* 濃色文字(#04201C)でコントラスト4.5:1以上を確保するため、暗い端は teal-500 までに留める
+   (teal-600 だと 3.36:1 で不足) */
 .btn-primary{
-  background:linear-gradient(135deg,var(--teal-600),var(--emerald-400)); color:#04201C;
+  background:linear-gradient(135deg,var(--teal-500),var(--emerald-400)); color:#04201C;
   box-shadow:0 8px 24px rgba(18,165,148,.28);
 }
 .btn-ghost{background:transparent; color:var(--aqua-300); border:1.5px solid rgba(125,232,208,.42)}
@@ -422,7 +426,7 @@ a:focus-visible,button:focus-visible{
 }
 .ncard .mark{
   width:56px; height:56px; border-radius:var(--r-md); flex:none; display:grid; place-items:center;
-  background:linear-gradient(135deg,var(--teal-600),var(--emerald-400)); color:#fff;
+  background:linear-gradient(135deg,var(--teal-700),var(--teal-500)); color:#fff;
 }
 .ncard .mark .icon{width:1.6rem; height:1.6rem}
 .ncard .t{display:block; font-weight:800; color:var(--text-strong); font-size:1.125rem}
@@ -709,7 +713,7 @@ html{scroll-behavior:smooth}
 
     <ul class="mgrid">
       <li class="mcard rv">
-        <span class="avatar"><img src="./assets/img/member-kubokawa.webp" width="560" height="571" loading="lazy" decoding="async" style="object-position:65% 52%" alt="久保川剛宏"></span>
+        <span class="avatar"><img src="./assets/img/member-kubokawa.webp" width="320" height="320" loading="lazy" decoding="async" alt="久保川剛宏"></span>
         <span class="role role-1">リーダー</span>
         <div>
           <h3 class="name">久保川 剛宏</h3>
@@ -733,7 +737,7 @@ html{scroll-behavior:smooth}
       </li>
 
       <li class="mcard rv">
-        <span class="avatar"><img src="./assets/img/member-nishimoto.webp" width="560" height="571" loading="lazy" decoding="async" style="object-position:35% 42%" alt="西本千晃"></span>
+        <span class="avatar"><img src="./assets/img/member-nishimoto.webp" width="320" height="320" loading="lazy" decoding="async" alt="西本千晃"></span>
         <span class="role role-2">副リーダー</span>
         <div>
           <h3 class="name">西本 千晃</h3>
@@ -752,7 +756,7 @@ html{scroll-behavior:smooth}
       </li>
 
       <li class="mcard rv">
-        <span class="avatar"><img src="./assets/img/member-tokuchiyo.webp" width="560" height="571" loading="lazy" decoding="async" style="object-position:27% 40%" alt="徳千代太一"></span>
+        <span class="avatar"><img src="./assets/img/member-tokuchiyo.webp" width="320" height="320" loading="lazy" decoding="async" alt="徳千代太一"></span>
         <span class="role role-3">スーパーバイザー</span>
         <div>
           <h3 class="name">徳千代 太一</h3>
