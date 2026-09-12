@@ -491,11 +491,13 @@ a:focus-visible,button:focus-visible{
 .copy{font-size:.75rem; color:var(--text-muted); letter-spacing:.04em}
 
 /* ---------------- Reveal animation ----------------
-   隠すのは .js-anim（<head>のインラインJSが付与）が付いているときだけ。
-   JSが無効・失敗・停止している環境では要素を隠さず、そのまま読める。 */
-.js-anim .rv{opacity:0; transform:translateY(16px)}
-.js-anim .rv.in{opacity:1; transform:none}
+   CSSでは何も隠さない。初期化時に「折り返しより下にある要素」だけへ
+   JSが .pre を付けて隠し、視界に入ったら外す。
+   これにより JSが無効／読込失敗／タイマーやObserverが抑制される環境
+   (バックグラウンドタブ、省電力、プレビュー描画など) でも
+   ファーストビューは必ず読め、本文が空白になることがない。 */
 .rv{transition:opacity .6s var(--ease), transform .6s var(--ease)}
+.rv.pre{opacity:0; transform:translateY(16px)}
 
 /* ---------------- Reduced motion ---------------- */
 @media (prefers-reduced-motion: reduce){
@@ -503,16 +505,13 @@ a:focus-visible,button:focus-visible{
     animation-duration:.01ms!important; animation-iteration-count:1!important;
     transition-duration:.01ms!important; scroll-behavior:auto!important;
   }
-  .rv,.js-anim .rv{opacity:1!important; transform:none!important}
+  .rv,.rv.pre{opacity:1!important; transform:none!important}
 }
 
 /* anchor offset for fixed header */
 [id]{scroll-margin-top:80px}
 html{scroll-behavior:smooth}
 </style>
-<!-- 出現アニメーションを有効化する印。JSが動く環境でのみ要素を隠すため、
-     描画前のここで付与する（JS無効時は隠さない＝全文が読める） -->
-<script>document.documentElement.className+=' js-anim'</script>
 </head>
 <body>
 
@@ -951,51 +950,43 @@ html{scroll-behavior:smooth}
      通過後は再交差しないため永久に不可視のまま残る。
      そこで IO は「見出しのスタッガ演出」用にとどめ、可視判定の正本は
      rAF スクロール監視側の sweep() に持たせる。 */
-  var rv = Array.prototype.slice.call(document.querySelectorAll('.rv'));
-
-  function show(el, delay){
-    if (el.classList.contains('in')) return;
-    el.style.transitionDelay = (delay || 0) + 'ms';
-    el.classList.add('in');
+  // 折り返しより下にある要素だけをJSが隠す。隠した分だけ rv で追跡する。
+  var limit0 = window.innerHeight * 0.92;
+  var rv = [];
+  if (!reduce) {
+    Array.prototype.forEach.call(document.querySelectorAll('.rv'), function(el){
+      if (el.getBoundingClientRect().top > limit0) { el.classList.add('pre'); rv.push(el); }
+    });
   }
 
-  // 折り返し位置より上に到達した .rv をすべて確定表示する（取りこぼしゼロ）
+  function show(el, delay){
+    el.style.transitionDelay = (delay || 0) + 'ms';
+    el.classList.remove('pre');
+  }
+
+  // 視界に入った(または通り過ぎた)ものを確実に表示する。
+  // IntersectionObserverは素早いスクロールでサンプリングの合間を通過した
+  // 要素を取りこぼすため、こちらを可視判定の正本にする。
   function sweep(){
     var limit = window.innerHeight * 0.92;
     for (var i = rv.length - 1; i >= 0; i--) {
-      if (rv[i].getBoundingClientRect().top < limit) {
-        show(rv[i], 0);
-        rv.splice(i, 1);
-      }
+      if (rv[i].getBoundingClientRect().top < limit) { show(rv[i], 0); rv.splice(i, 1); }
     }
   }
 
-  if (reduce) {
-    rv.forEach(function(el){ el.classList.add('in'); });
-    rv = [];
-  } else {
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(en){
-          if (!en.isIntersecting) return;
-          var sibs = Array.prototype.slice.call(en.target.parentNode.children);
-          var i = Math.min(sibs.indexOf(en.target), 4);
-          show(en.target, i * 60);
-          io.unobserve(en.target);
-        });
-      }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
-      rv.forEach(function(el){ io.observe(el); });
-    }
-    sweep();
-    window.addEventListener('resize', sweep, {passive:true});
-    // 最終保険: rAF や IntersectionObserver が抑制される環境
-    // (バックグラウンドタブ、省電力、プレビュー描画など) でも
-    // 一定時間後に必ず全要素を表示し、内容が消えたままにならないようにする
-    setTimeout(function(){
-      rv.forEach(function(el){ el.classList.add('in'); });
-      rv = [];
-    }, 2500);
+  if (rv.length && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var sibs = Array.prototype.slice.call(en.target.parentNode.children);
+        var i = Math.min(sibs.indexOf(en.target), 4);
+        show(en.target, i * 60);
+        io.unobserve(en.target);
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el){ io.observe(el); });
   }
+  window.addEventListener('resize', sweep, {passive:true});
 
   /* ---- scroll spy ---- */
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
