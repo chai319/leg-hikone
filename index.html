@@ -356,20 +356,25 @@ a:focus-visible,button:focus-visible{
 @media(hover:hover){ .chip:hover{border-color:var(--emerald-400); color:var(--emerald-400)} }
 
 /* ---------------- Join ---------------- */
+/* 白文字を載せるため、地は teal-700〜teal-600 に限定する。
+   emerald-400 まで明るくすると白文字が 1.89:1 になり読めない。
+   「明るい呼びかけ」の役割は上辺のエメラルド罫とボタンの発光で表現する。 */
 .join{
-  background:linear-gradient(135deg,var(--teal-700) 0%,var(--teal-600) 45%,var(--emerald-400) 100%);
+  background:linear-gradient(135deg,var(--teal-700) 0%,var(--teal-600) 100%);
+  border-top:3px solid var(--emerald-400);
   color:#fff; text-align:center;
 }
 .join h2{color:#fff; font-size:clamp(1.6rem,5vw,2.75rem); letter-spacing:-.02em; margin-bottom:1.25rem}
-.join .join-lead{max-width:32em; margin:0 auto 2rem; color:rgba(255,255,255,.94)}
+.join .join-lead{max-width:32em; margin:0 auto 2rem; color:#fff}
 .join-chips{display:flex; flex-wrap:wrap; gap:.625rem; justify-content:center; margin-bottom:2.5rem}
 .join-chips li{
-  background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3);
+  /* 白の重ね(.16)だと地が明るくなり白文字が3.8:1に落ちるため、暗色を重ねる */
+  background:rgba(4,32,28,.22); border:1px solid rgba(255,255,255,.32);
   border-radius:var(--r-pill); padding:.5rem 1.1rem; font-size:.875rem; font-weight:700;
   display:inline-flex; align-items:center; gap:.4rem;
 }
-.join .btn-light{width:min(420px,100%)}
-.join .note{margin-top:1rem; font-size:.8125rem; color:rgba(255,255,255,.88); letter-spacing:.04em}
+.join .btn-light{width:min(420px,100%); box-shadow:0 10px 40px rgba(45,212,167,.45)}
+.join .note{margin-top:1rem; font-size:.8125rem; color:var(--text-on-dark); letter-spacing:.04em}
 
 /* ---------------- Members ---------------- */
 .mgrid{display:grid; gap:1.5rem}
@@ -927,28 +932,56 @@ html{scroll-behavior:smooth}
     ticking = true;
     requestAnimationFrame(function(){
       hdr.classList.toggle('is-scrolled', window.scrollY > 24);
+      if (rv && rv.length) sweep();   // 出現の取りこぼしを毎フレーム回収する
       ticking = false;
     });
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  /* ---- reveal on scroll ---- */
-  var rv = document.querySelectorAll('.rv');
-  if (reduce || !('IntersectionObserver' in window)) {
+  /* ---- reveal on scroll ----
+     IntersectionObserver だけに任せると、素早いスクロール(フリック、Cmd+End、
+     アンカージャンプ)でサンプリングの合間を通過した要素が検知されず、
+     通過後は再交差しないため永久に不可視のまま残る。
+     そこで IO は「見出しのスタッガ演出」用にとどめ、可視判定の正本は
+     rAF スクロール監視側の sweep() に持たせる。 */
+  var rv = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+
+  function show(el, delay){
+    if (el.classList.contains('in')) return;
+    el.style.transitionDelay = (delay || 0) + 'ms';
+    el.classList.add('in');
+  }
+
+  // 折り返し位置より上に到達した .rv をすべて確定表示する（取りこぼしゼロ）
+  function sweep(){
+    var limit = window.innerHeight * 0.92;
+    for (var i = rv.length - 1; i >= 0; i--) {
+      if (rv[i].getBoundingClientRect().top < limit) {
+        show(rv[i], 0);
+        rv.splice(i, 1);
+      }
+    }
+  }
+
+  if (reduce) {
     rv.forEach(function(el){ el.classList.add('in'); });
+    rv = [];
   } else {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (!en.isIntersecting) return;
-        var sibs = Array.prototype.slice.call(en.target.parentNode.children);
-        var i = Math.min(sibs.indexOf(en.target), 4);
-        en.target.style.transitionDelay = (i * 60) + 'ms';
-        en.target.classList.add('in');
-        io.unobserve(en.target);
-      });
-    }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
-    rv.forEach(function(el){ io.observe(el); });
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if (!en.isIntersecting) return;
+          var sibs = Array.prototype.slice.call(en.target.parentNode.children);
+          var i = Math.min(sibs.indexOf(en.target), 4);
+          show(en.target, i * 60);
+          io.unobserve(en.target);
+        });
+      }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
+      rv.forEach(function(el){ io.observe(el); });
+    }
+    sweep();
+    window.addEventListener('resize', sweep, {passive:true});
   }
 
   /* ---- scroll spy ---- */
