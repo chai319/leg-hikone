@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEG彦根 — ロイロでつながる滋賀の先生コミュニティ</title>
+<meta name="description" content="滋賀県彦根を拠点に、&quot;対話&quot;から授業づくりを考える教育者グループ LEG彦根。ロイロ認定のLEG制度のもと、校種・職種を問わず誰でも参加できます。">
+<link rel="canonical" href="https://chai319.github.io/leg-hikone/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chai319.github.io/leg-hikone/">
+<meta property="og:title" content="LEG彦根 — ロイロでつながる滋賀の先生コミュニティ">
+<meta property="og:description" content="&quot;対話&quot;重視。押し付けない、自分らしい気づきを持ち帰る。校種・職種を問わず参加できる、滋賀・彦根の教育者グループです。">
+<meta property="og:image" content="https://chai319.github.io/leg-hikone/og-image.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="LEG彦根">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LEG彦根 — ロイロでつながる滋賀の先生コミュニティ">
+<meta name="twitter:description" content="&quot;対話&quot;重視。押し付けない、自分らしい気づきを持ち帰る。滋賀・彦根の教育者グループです。">
+<meta name="twitter:image" content="https://chai319.github.io/leg-hikone/og-image.jpg">
+<meta name="theme-color" content="#06211D">
+
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "LEG彦根",
+  "alternateName": "Learning Ecosystem Group Hikone",
+  "url": "https://chai319.github.io/leg-hikone/",
+  "logo": "https://chai319.github.io/leg-hikone/assets/img/logo-leg-hikone.webp",
+  "description": "地域でのICT利用促進のためにスタートした地域ごとの教育者グループをロイロが認定し支援する制度「LEG」の、彦根拠点のグループ。2024年10月3日に誕生。",
+  "foundingDate": "2024-10-03",
+  "areaServed": { "@type": "Place", "name": "滋賀県彦根市" },
+  "sameAs": [
+    "https://legnagahama.my.canva.site/top",
+    "https://note.com/chai319"
+  ]
+}
+</script>
+
+<style>
+/* ============================================================
+   LEG彦根 — Design Tokens
+   アイコン形状は Lucide (ISC License) を参考にした自作パス
+   ============================================================ */
+:root{
+  --ink-900:#06211D; --ink-800:#0B2F2A; --ink-700:#14423B;
+  --teal-700:#0B6357; --teal-600:#0E7C6B; --teal-500:#12A594;
+  --emerald-400:#2DD4A7; --aqua-300:#7DE8D0;
+  --sand-50:#F6FAF8; --paper:#FFFFFF; --line:#E2EDE9;
+  --text-strong:#0A2A26; --text-body:#38534F; --text-muted:#6B8683;
+  --text-on-dark:#EAF6F2;
+  --amber-400:#F2B441;
+  --r-sm:10px; --r-md:16px; --r-lg:24px; --r-pill:999px;
+  --shadow-card:0 1px 2px rgba(10,42,38,.04), 0 8px 24px rgba(10,42,38,.06);
+  --shadow-lift:0 4px 8px rgba(10,42,38,.06), 0 16px 40px rgba(10,42,38,.10);
+  --ease:cubic-bezier(.22,.61,.36,1); --dur:.32s;
+  --head:'Plus Jakarta Sans','Noto Sans JP',system-ui,-apple-system,'Hiragino Sans','Yu Gothic UI',sans-serif;
+  --nav-h:64px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--sand-50); color:var(--text-body);
+  font-family:var(--head); font-weight:400;
+  font-size:clamp(.95rem,1.6vw,1.0625rem); line-height:1.9;
+  letter-spacing:.02em; overflow-x:hidden;
+}
+img{display:block; max-width:100%; height:auto}
+a{color:var(--teal-700)}
+h1,h2,h3,h4{color:var(--text-strong); margin:0; font-weight:800; letter-spacing:-.01em; line-height:1.3}
+p{margin:0}
+ul{margin:0; padding:0; list-style:none}
+
+.wrap{width:min(1140px,100% - 2rem); margin-inline:auto}
+@media(min-width:600px){ .wrap{width:min(1140px,100% - 2.5rem)} }
+
+section{padding:clamp(4rem,9vw,7.5rem) 0; position:relative}
+.sec-dark{background:var(--ink-900); color:var(--text-on-dark)}
+.sec-dark h2,.sec-dark h3{color:#fff}
+
+/* --- Skip link --- */
+.skip-link{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--amber-400); color:#0A2A26; padding:.75rem 1.25rem;
+  font-weight:700; border-radius:0 0 var(--r-sm) 0;
+}
+.skip-link:focus{left:0}
+
+/* --- Icons --- */
+.icon{width:1.5em; height:1.5em; fill:none; stroke:currentColor; stroke-width:1.9;
+  stroke-linecap:round; stroke-linejoin:round; flex:none}
+
+/* --- Focus --- */
+a:focus-visible,button:focus-visible{
+  outline:3px solid var(--amber-400); outline-offset:3px; border-radius:var(--r-sm)
+}
+
+/* ---------------- Header ---------------- */
+.hdr{
+  position:fixed; inset:0 0 auto 0; z-index:100; height:var(--nav-h);
+  display:flex; align-items:center;
+  transition:background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), height var(--dur) var(--ease);
+}
+.hdr.is-scrolled{
+  height:56px; background:rgba(6,33,29,.78);
+  -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 rgba(125,232,208,.14);
+}
+.hdr-in{display:flex; align-items:center; gap:1rem; width:min(1140px,100% - 2rem); margin-inline:auto}
+.brand{
+  display:flex; align-items:baseline; gap:.5rem; text-decoration:none;
+  color:#fff; font-weight:800; font-size:1.125rem; letter-spacing:.01em; margin-right:auto;
+}
+.brand small{font-size:.625rem; font-weight:600; color:var(--aqua-300); letter-spacing:.12em; text-transform:uppercase}
+
+.nav-toggle{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:44px; height:44px; border:0; background:transparent; color:#fff; cursor:pointer;
+}
+.nav-toggle .icon{width:26px; height:26px}
+.nav-toggle .i-close{display:none}
+.nav-toggle[aria-expanded="true"] .i-menu{display:none}
+.nav-toggle[aria-expanded="true"] .i-close{display:block}
+
+.nav{
+  position:fixed; inset:0; background:rgba(6,33,29,.97);
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  display:flex; flex-direction:column; justify-content:center; gap:.25rem;
+  padding:5rem 1.5rem 2rem; overflow-y:auto;
+}
+.nav[hidden]{display:none}
+.nav a{
+  display:block; color:var(--text-on-dark); text-decoration:none;
+  font-size:1.125rem; font-weight:700; padding:.85rem .5rem;
+  border-bottom:1px solid rgba(125,232,208,.14);
+}
+.nav a.is-active{color:var(--emerald-400)}
+.nav .nav-cta{
+  margin-top:1.5rem; border:0; text-align:center; border-radius:var(--r-pill);
+  background:linear-gradient(135deg,var(--teal-600),var(--emerald-400)); color:#04201C;
+}
+
+@media(min-width:900px){
+  .nav-toggle{display:none}
+  .nav,.nav[hidden]{
+    display:flex; position:static; inset:auto; flex-direction:row; align-items:center;
+    gap:.25rem; padding:0; background:none; backdrop-filter:none; -webkit-backdrop-filter:none;
+    overflow:visible;
+  }
+  .nav a{
+    font-size:.8125rem; font-weight:600; padding:.5rem .6rem; border:0; position:relative;
+    letter-spacing:.01em;
+  }
+  .nav a::after{
+    content:""; position:absolute; left:.6rem; right:.6rem; bottom:.25rem; height:2px;
+    background:var(--emerald-400); transform:scaleX(0); transform-origin:left;
+    transition:transform var(--dur) var(--ease);
+  }
+  .nav a.is-active::after{transform:scaleX(1)}
+  .nav .nav-cta{
+    margin:0 0 0 .75rem; padding:.55rem 1.1rem; font-weight:700; color:#04201C;
+  }
+  .nav .nav-cta::after{display:none}
+}
+
+/* ---------------- Hero ---------------- */
+.hero{
+  min-height:88svh; display:flex; align-items:center;
+  background:var(--ink-900); color:var(--text-on-dark);
+  padding:calc(var(--nav-h) + 3rem) 0 4rem; overflow:hidden;
+}
+.hero::before,.hero::after{content:""; position:absolute; inset:0; pointer-events:none}
+.hero::before{
+  background-image:url(./assets/img/hero-banner.webp);
+  background-size:cover; background-position:center;
+  opacity:.17; filter:blur(2px) saturate(.75);
+}
+.hero::after{
+  background:
+    radial-gradient(80% 60% at 15% 10%, rgba(18,165,148,.34) 0%, transparent 60%),
+    radial-gradient(70% 55% at 88% 78%, rgba(45,212,167,.22) 0%, transparent 62%),
+    linear-gradient(180deg, rgba(6,33,29,.62) 0%, rgba(6,33,29,.88) 70%, var(--ink-900) 100%);
+  animation:drift 24s var(--ease) infinite alternate;
+}
+@keyframes drift{ from{transform:translate3d(-1.5%,-1%,0) scale(1.04)} to{transform:translate3d(1.5%,1.5%,0) scale(1.08)} }
+
+.hero-in{position:relative; z-index:1; display:grid; gap:clamp(2rem,5vw,4rem); align-items:center}
+@media(min-width:900px){ .hero-in{grid-template-columns:1.25fr .75fr} }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.5rem; flex-wrap:wrap;
+  font-size:.75rem; font-weight:700; letter-spacing:.08em;
+  color:var(--aqua-300); border:1px solid rgba(125,232,208,.32);
+  padding:.4rem .9rem; border-radius:var(--r-pill); margin-bottom:1.5rem;
+}
+.eyebrow .dot{width:6px; height:6px; border-radius:50%; background:var(--emerald-400); flex:none}
+
+.hero h1{
+  color:#fff; font-size:clamp(2.5rem,8vw,4.5rem); line-height:1.08; letter-spacing:-.03em;
+  margin-bottom:.5rem;
+}
+.hero .en{
+  display:block; font-size:clamp(.75rem,2.2vw,1rem); font-weight:600; letter-spacing:.16em;
+  color:var(--emerald-400); text-transform:uppercase; margin-bottom:1.75rem;
+}
+.hero .lead{
+  font-size:clamp(1.0625rem,2.4vw,1.375rem); line-height:1.85; color:var(--text-on-dark);
+  max-width:24em; margin-bottom:2.25rem; font-weight:400;
+}
+.hero .lead b{color:var(--emerald-400); font-weight:700}
+
+.btn-row{display:flex; flex-wrap:wrap; gap:.875rem}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  min-height:56px; padding:0 1.75rem; border-radius:var(--r-pill);
+  font-family:var(--head); font-size:1rem; font-weight:700; text-decoration:none;
+  border:0; cursor:pointer; transition:transform var(--dur) var(--ease), filter var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--teal-600),var(--emerald-400)); color:#04201C;
+  box-shadow:0 8px 24px rgba(18,165,148,.28);
+}
+.btn-ghost{background:transparent; color:var(--aqua-300); border:1.5px solid rgba(125,232,208,.42)}
+.btn-light{background:#fff; color:var(--teal-700); box-shadow:0 10px 30px rgba(4,32,28,.18)}
+@media(hover:hover){
+  .btn-primary:hover,.btn-light:hover{transform:translateY(-2px); filter:brightness(1.06)}
+  .btn-ghost:hover{transform:translateY(-2px); border-color:var(--emerald-400); color:#fff}
+}
+
+.hero-logo{justify-self:center; max-width:min(240px,58vw); filter:drop-shadow(0 18px 40px rgba(0,0,0,.45))}
+@media(min-width:900px){ .hero-logo{max-width:260px} }
+
+.scroll-hint{
+  position:absolute; left:50%; bottom:1.25rem; transform:translateX(-50%); z-index:1;
+  font-size:.6875rem; letter-spacing:.18em; color:var(--aqua-300); text-transform:uppercase;
+  display:flex; flex-direction:column; align-items:center; gap:.4rem;
+}
+.scroll-hint span{width:1px; height:28px; background:linear-gradient(var(--emerald-400),transparent); animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.25; transform:scaleY(.6)}50%{opacity:1; transform:scaleY(1)}}
+@media(max-width:899px){ .scroll-hint{display:none} }
+
+/* ---------------- Section heading ---------------- */
+.sec-label{
+  display:block; font-size:.6875rem; font-weight:700; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--teal-700); margin-bottom:.75rem;
+}
+.sec-dark .sec-label{color:var(--emerald-400)}
+.sec-h{font-size:clamp(1.6rem,4.2vw,2.5rem); line-height:1.35; margin-bottom:1rem}
+.sec-h + .sec-desc{max-width:34em; margin-top:1rem}
+.bar{width:44px; height:4px; border-radius:2px; background:var(--teal-500); margin:1.5rem 0 0}
+.sec-dark .bar{background:var(--emerald-400)}
+.sec-head{margin-bottom:clamp(2.5rem,5vw,3.5rem)}
+
+/* ---------------- News ---------------- */
+.news-list{display:grid; gap:1rem}
+.news-item{
+  background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--emerald-400);
+  border-radius:var(--r-md); padding:1.5rem clamp(1.25rem,3vw,2rem);
+  box-shadow:var(--shadow-card); display:grid; gap:.75rem;
+}
+@media(min-width:768px){ .news-item{grid-template-columns:auto 1fr; gap:1.75rem; align-items:start} }
+.news-date{
+  display:inline-flex; align-items:center; gap:.45rem; white-space:nowrap;
+  font-size:.8125rem; font-weight:700; letter-spacing:.04em; color:var(--teal-700);
+}
+.news-date .icon{width:1.1em; height:1.1em}
+.news-item p{color:var(--text-body)}
+
+/* ---------------- About ---------------- */
+.about-grid{display:grid; gap:clamp(2rem,4vw,3rem)}
+@media(min-width:900px){ .about-grid{grid-template-columns:1fr 1fr; align-items:center} }
+.about-visual{
+  border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-lift);
+  border:1px solid var(--line);
+}
+.founded{
+  display:flex; align-items:center; gap:1rem; margin-top:2rem;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md);
+  padding:1.25rem 1.5rem; box-shadow:var(--shadow-card);
+}
+.founded .big{font-family:var(--head); font-weight:800; font-size:1.5rem; color:var(--teal-700); line-height:1.2; letter-spacing:-.01em}
+.founded .cap{font-size:.75rem; color:var(--text-muted); letter-spacing:.06em; font-weight:700}
+
+.link-card{
+  display:flex; align-items:center; gap:1rem; margin-top:1rem; text-decoration:none;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-md);
+  padding:1.1rem 1.35rem; box-shadow:var(--shadow-card);
+  transition:transform var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.link-card .txt{flex:1}
+.link-card .t{display:block; font-weight:700; color:var(--text-strong); font-size:.9375rem}
+.link-card .s{display:block; font-size:.75rem; color:var(--text-muted); letter-spacing:.04em}
+.link-card .icon{color:var(--teal-500); transition:transform var(--dur) var(--ease)}
+@media(hover:hover){
+  .link-card:hover{transform:translateY(-3px); border-color:var(--teal-500); box-shadow:var(--shadow-lift)}
+  .link-card:hover .icon{transform:translate(4px,-4px)}
+}
+
+/* ---------------- Value ---------------- */
+.q-head{font-size:clamp(1.5rem,5vw,2.75rem); line-height:1.35; letter-spacing:-.02em}
+.q-head span{display:block}
+.q-head .hl{color:var(--emerald-400)}
+
+.vgrid{display:grid; gap:1.25rem}
+@media(min-width:600px){ .vgrid{grid-template-columns:repeat(2,1fr)} }
+@media(min-width:960px){
+  .vgrid{grid-template-columns:repeat(6,1fr)}
+  .vcard:nth-child(1),.vcard:nth-child(2){grid-column:span 3}
+  .vcard:nth-child(3),.vcard:nth-child(4),.vcard:nth-child(5){grid-column:span 2}
+}
+.vcard{
+  background:var(--ink-800); border:1px solid var(--ink-700); border-radius:var(--r-lg);
+  padding:clamp(1.5rem,3vw,2rem); display:flex; flex-direction:column; gap:.875rem;
+  transition:transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+@media(hover:hover){ .vcard:hover{transform:translateY(-4px); border-color:var(--teal-500)} }
+.vcard .icon{width:2rem; height:2rem; color:var(--emerald-400)}
+.vcard h3{font-size:clamp(1.05rem,2.2vw,1.25rem); line-height:1.5}
+.vcard p{color:var(--aqua-300); font-size:.9375rem; line-height:1.85}
+.tag{
+  align-self:flex-start; font-size:.6875rem; font-weight:700; letter-spacing:.08em;
+  color:var(--amber-400); border:1px solid rgba(242,180,65,.4);
+  padding:.2rem .6rem; border-radius:var(--r-pill);
+}
+.inline-link{
+  display:inline-flex; align-items:center; gap:.35rem; margin-top:.25rem;
+  color:var(--emerald-400); font-weight:700; font-size:.875rem; text-decoration:none;
+  border-bottom:1px solid rgba(45,212,167,.35); padding-bottom:.1rem; align-self:flex-start;
+}
+.inline-link .icon{width:1em; height:1em}
+@media(hover:hover){ .inline-link:hover{border-bottom-color:var(--emerald-400)} }
+
+/* --- Tools --- */
+.tools{margin-top:clamp(3rem,6vw,4.5rem); padding-top:clamp(2.5rem,5vw,3.5rem); border-top:1px solid var(--ink-700)}
+.tools h3{font-size:1.125rem; margin-bottom:1.25rem}
+.chips{display:flex; flex-wrap:wrap; gap:.625rem}
+.chip{
+  display:inline-flex; align-items:center; gap:.4rem;
+  border:1px solid rgba(125,232,208,.28); border-radius:var(--r-pill);
+  padding:.5rem 1.05rem; font-size:.875rem; font-weight:700; color:var(--text-on-dark);
+  transition:border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+@media(hover:hover){ .chip:hover{border-color:var(--emerald-400); color:var(--emerald-400)} }
+
+/* ---------------- Join ---------------- */
+.join{
+  background:linear-gradient(135deg,var(--teal-700) 0%,var(--teal-600) 45%,var(--emerald-400) 100%);
+  color:#fff; text-align:center;
+}
+.join h2{color:#fff; font-size:clamp(1.6rem,5vw,2.75rem); letter-spacing:-.02em; margin-bottom:1.25rem}
+.join .join-lead{max-width:32em; margin:0 auto 2rem; color:rgba(255,255,255,.94)}
+.join-chips{display:flex; flex-wrap:wrap; gap:.625rem; justify-content:center; margin-bottom:2.5rem}
+.join-chips li{
+  background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3);
+  border-radius:var(--r-pill); padding:.5rem 1.1rem; font-size:.875rem; font-weight:700;
+  display:inline-flex; align-items:center; gap:.4rem;
+}
+.join .btn-light{width:min(420px,100%)}
+.join .note{margin-top:1rem; font-size:.8125rem; color:rgba(255,255,255,.88); letter-spacing:.04em}
+
+/* ---------------- Members ---------------- */
+.mgrid{display:grid; gap:1.5rem}
+@media(min-width:640px){ .mgrid{grid-template-columns:repeat(2,1fr)} }
+@media(min-width:980px){ .mgrid{grid-template-columns:repeat(3,1fr)} }
+.mcard{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:clamp(1.5rem,3vw,2rem); box-shadow:var(--shadow-card);
+  display:flex; flex-direction:column; gap:1rem;
+  transition:transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+@media(hover:hover){ .mcard:hover{transform:translateY(-4px); box-shadow:var(--shadow-lift); border-color:var(--teal-500)} }
+.avatar{
+  width:104px; height:104px; border-radius:50%; overflow:hidden; flex:none;
+  border:2px solid var(--emerald-400); background:var(--teal-700);
+  display:grid; place-items:center; color:#fff; font-weight:800; font-size:1.75rem; letter-spacing:.02em;
+}
+.avatar img{width:100%; height:100%; object-fit:cover}
+.role{
+  align-self:flex-start; font-size:.6875rem; font-weight:700; letter-spacing:.1em;
+  border-radius:var(--r-pill); padding:.25rem .75rem;
+}
+.role-1{background:var(--teal-700); color:#fff}
+.role-2{background:rgba(14,124,107,.12); color:var(--teal-700); border:1px solid rgba(14,124,107,.28)}
+.role-3{background:rgba(242,180,65,.16); color:#8A5B06; border:1px solid rgba(242,180,65,.5)}
+.mcard .name{font-size:1.375rem; line-height:1.35; letter-spacing:-.01em}
+.mcard .affil{font-size:.875rem; color:var(--text-muted); line-height:1.7; margin-top:.2rem}
+.pills{display:flex; flex-wrap:wrap; gap:.4rem}
+.pills li{
+  font-size:.75rem; font-weight:700; line-height:1.6;
+  background:var(--sand-50); border:1px solid var(--line); color:var(--teal-700);
+  border-radius:var(--r-pill); padding:.25rem .7rem;
+}
+.pills.soft li{
+  background:transparent; border-style:dashed; border-color:rgba(107,134,131,.5);
+  color:var(--text-muted); font-weight:400;
+}
+.pills-cap{font-size:.6875rem; font-weight:700; letter-spacing:.1em; color:var(--text-muted); margin-bottom:.4rem; display:block}
+.mcard .foot{margin-top:auto; padding-top:.5rem}
+.txt-link{
+  display:inline-flex; align-items:center; gap:.4rem; font-size:.875rem; font-weight:700;
+  color:var(--teal-700); text-decoration:none; border-bottom:1px solid rgba(11,99,87,.3); padding-bottom:.1rem;
+}
+.txt-link .icon{width:1em; height:1em}
+@media(hover:hover){ .txt-link:hover{border-bottom-color:var(--teal-700)} }
+
+/* ---------------- Network ---------------- */
+.ngrid{display:grid; gap:1.25rem; grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.ncard{
+  display:flex; align-items:center; gap:1.25rem; text-decoration:none;
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:clamp(1.5rem,3vw,2rem); box-shadow:var(--shadow-card);
+  transition:transform var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.ncard .mark{
+  width:56px; height:56px; border-radius:var(--r-md); flex:none; display:grid; place-items:center;
+  background:linear-gradient(135deg,var(--teal-600),var(--emerald-400)); color:#fff;
+}
+.ncard .mark .icon{width:1.6rem; height:1.6rem}
+.ncard .t{display:block; font-weight:800; color:var(--text-strong); font-size:1.125rem}
+.ncard .s{display:block; font-size:.8125rem; color:var(--text-muted); margin-top:.2rem}
+.ncard .go{color:var(--teal-500); transition:transform var(--dur) var(--ease)}
+@media(hover:hover){
+  .ncard:hover{transform:translateY(-4px); border-color:var(--teal-500); box-shadow:var(--shadow-lift)}
+  .ncard:hover .go{transform:translate(4px,-4px)}
+}
+.net-msg{
+  margin-top:1.5rem; font-weight:700; color:var(--teal-700);
+  display:inline-flex; align-items:center; gap:.5rem;
+}
+
+/* ---------------- Activity ---------------- */
+.tl{position:relative; padding-left:2rem}
+.tl::before{
+  content:""; position:absolute; left:5px; top:.6rem; bottom:.6rem; width:2px;
+  background:linear-gradient(var(--teal-500),var(--line));
+}
+.tl-item{position:relative; padding-bottom:clamp(2rem,4vw,3rem)}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:""; position:absolute; left:-2rem; top:.55rem; width:12px; height:12px;
+  border-radius:50%; background:var(--emerald-400); border:2px solid var(--sand-50);
+  box-shadow:0 0 0 3px rgba(18,165,148,.18);
+}
+.tl-date{
+  font-size:.8125rem; font-weight:700; letter-spacing:.08em; color:var(--teal-700);
+  display:block; margin-bottom:.5rem;
+}
+.tl-item h3{font-size:clamp(1.125rem,2.6vw,1.375rem); line-height:1.5; margin-bottom:.75rem}
+.tl-card{
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:clamp(1.25rem,3vw,1.75rem); box-shadow:var(--shadow-card); margin-top:1rem;
+}
+.tl-card .pills{margin-top:1rem}
+.flyer{border-radius:var(--r-md); overflow:hidden; border:1px solid var(--line); margin-top:1.25rem; max-width:520px}
+.quote{
+  margin-top:1rem; font-weight:700; color:var(--teal-700); font-size:1.0625rem;
+  display:inline-flex; align-items:center; gap:.5rem;
+}
+
+/* ---------------- Footer ---------------- */
+.ftr{background:var(--ink-900); color:var(--text-on-dark); padding:clamp(3.5rem,7vw,5rem) 0 2rem}
+.ftr-cta{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1.5rem;
+  padding-bottom:2.5rem; border-bottom:1px solid var(--ink-700);
+}
+.ftr-cta h2{color:#fff; font-size:clamp(1.25rem,3.4vw,1.75rem); line-height:1.5}
+.ftr-nav{display:flex; flex-wrap:wrap; gap:.25rem 1.25rem; margin:2.5rem 0 2rem}
+.ftr-nav a{color:var(--aqua-300); font-size:.875rem; text-decoration:none}
+@media(hover:hover){ .ftr-nav a:hover{color:#fff} }
+.ftr-bot{display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; align-items:center}
+.ftr-brand{display:flex; align-items:baseline; gap:.5rem; font-weight:800; color:#fff; font-size:1.0625rem}
+.ftr-brand small{font-size:.625rem; font-weight:600; color:var(--aqua-300); letter-spacing:.12em; text-transform:uppercase}
+.copy{font-size:.75rem; color:var(--text-muted); letter-spacing:.04em}
+
+/* ---------------- Reveal animation ---------------- */
+.rv{opacity:0; transform:translateY(16px); transition:opacity .6s var(--ease), transform .6s var(--ease)}
+.rv.in{opacity:1; transform:none}
+
+/* ---------------- Reduced motion ---------------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important; animation-iteration-count:1!important;
+    transition-duration:.01ms!important; scroll-behavior:auto!important;
+  }
+  .rv{opacity:1!important; transform:none!important}
+}
+
+/* anchor offset for fixed header */
+[id]{scroll-margin-top:80px}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<!-- ===== SVG icon sprite (shapes after Lucide, ISC License) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.98A6 6 0 0 0 6.2 9.5 4.5 4.5 0 0 0 6.5 19h11z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="M4.5 10.5 3 12a1 1 0 1 0 3 3"/><path d="M9 13 7.5 14.5a1 1 0 1 0 3 3"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></symbol>
+</svg>
+
+<!-- ===================== HEADER ===================== -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#top">LEG彦根<small>Hikone</small></a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="メニューを開く">
+      <svg class="icon i-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon i-close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+    <nav class="nav" id="nav" aria-label="メインナビゲーション" hidden>
+      <a href="#top">ホーム</a>
+      <a href="#news">お知らせ</a>
+      <a href="#about">LEG彦根とは？</a>
+      <a href="#value">活動内容</a>
+      <a href="#members">コアメンバー</a>
+      <a href="#network">連携LEG</a>
+      <a href="#activity">活動実績</a>
+      <a class="nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSeit70rebNXdqDiX1lAzvrPUDZgjxNi13CZU8BAcSmiuJ1UHA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" aria-label="参加フォーム（別タブで開きます）">参加フォーム</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="wrap hero-in">
+    <div class="rv">
+      <p class="eyebrow"><span class="dot"></span>2024.10.03 設立 ／ ロイロ認定 LEG</p>
+      <h1 id="hero-h">LEG彦根</h1>
+      <span class="en">Learning Ecosystem Group Hikone</span>
+      <p class="lead">滋賀・彦根の、<b>&quot;対話&quot;</b>からはじまる<br>教育者のゆるい生態系。</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeit70rebNXdqDiX1lAzvrPUDZgjxNi13CZU8BAcSmiuJ1UHA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" aria-label="参加フォームへ（別タブで開きます）">
+          参加フォームへ
+          <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#about">LEG彦根とは？</a>
+      </div>
+    </div>
+    <img class="hero-logo rv" src="./assets/img/logo-leg-hikone.webp" width="420" height="754"
+         alt="LEG彦根の公式ロゴ。LoiLoNote School のマップピン型バッジに「LEG Hikone」の文字。" fetchpriority="high">
+  </div>
+  <p class="scroll-hint" aria-hidden="true">Scroll<span></span></p>
+</section>
+
+<!-- ===================== NEWS ===================== -->
+<section id="news" aria-labelledby="news-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label">News</span>
+      <h2 class="sec-h" id="news-h">お知らせ</h2>
+      <div class="bar"></div>
+    </div>
+    <!-- お知らせを追加するときは、この <ul> の先頭に <li class="news-item"> を複製して挿入してください -->
+    <ul class="news-list">
+      <li class="news-item rv">
+        <p class="news-date">
+          <svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg>
+          2025.10.13
+        </p>
+        <p>2025年10月13日(月・祝)午後 長浜バイオ大学においてLEG長浜と合同で教育イベント終了しました！！ 次のイベントでお会いしましょう！</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" style="background:var(--paper)" aria-labelledby="about-h">
+  <div class="wrap about-grid">
+    <div class="rv">
+      <span class="sec-label">About</span>
+      <h2 class="sec-h" id="about-h">LEG彦根とは？</h2>
+      <div class="bar" style="margin-bottom:1.75rem"></div>
+      <p>LEGとは、地域でのICT利用促進のためにスタートした地域ごとの教育者グループをロイロが認定し支援する制度です。現在はICTを活用した授業デザインやこれからの学びを考えるなど、多岐にわたった活動をしています。</p>
+
+      <div class="founded">
+        <svg class="icon" style="width:2rem;height:2rem;color:var(--teal-500)" aria-hidden="true"><use href="#i-spark"/></svg>
+        <div>
+          <span class="big">2024年10月3日</span>
+          <span class="cap">LEG彦根が誕生しました</span>
+        </div>
+      </div>
+
+      <a class="link-card" href="https://help.loilonote.app/--608b88eafed1310022417bd7" target="_blank" rel="noopener noreferrer" aria-label="ロイロ認定LEGとは？（別タブで開きます）">
+        <span class="txt">
+          <span class="t">ロイロ認定LEGとは？</span>
+          <span class="s">LoiLo 公式ヘルプで制度を見る</span>
+        </span>
+        <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg>
+      </a>
+    </div>
+
+    <div class="about-visual rv">
+      <img src="./assets/img/hero-banner.webp" width="1080" height="1080" loading="lazy" decoding="async"
+           alt="彦根城を背景にしたLEG彦根のキービジュアル。「ゆるくはなそう」「LEG彦根」「ロイロでつながる」「滋賀の先生コミュニティ」の文字。">
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VALUE + TOOLS ===================== -->
+<section class="sec-dark" id="value" aria-labelledby="value-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label">What we do</span>
+      <h2 class="sec-h q-head" id="value-h">
+        <span>何ができるの？</span>
+        <span>何をするの？</span>
+        <span class="hl">なんかいいことあるの？</span>
+      </h2>
+      <div class="bar"></div>
+    </div>
+
+    <ul class="vgrid">
+      <li class="vcard rv">
+        <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+        <h3>&quot;対話&quot;が主役</h3>
+        <p>&quot;対話&quot;重視。押し付けない、自分らしい気づきを持ち帰る。</p>
+      </li>
+      <li class="vcard rv">
+        <svg class="icon" aria-hidden="true"><use href="#i-compass"/></svg>
+        <h3>授業づくりに伴走します</h3>
+        <p>授業アイデア出しの相談・随伴、実践事例報告、ゆるい繋がり。</p>
+      </li>
+      <li class="vcard rv">
+        <svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg>
+        <span class="tag">非同期</span>
+        <h3>集まらなくても、できる</h3>
+        <p>非同期ドキュメント共有のみで授業案を練り上げた実績。</p>
+      </li>
+      <li class="vcard rv">
+        <svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg>
+        <h3>強制は、しません</h3>
+        <p>強制なし、ガツガツしない気軽な参加歓迎。</p>
+      </li>
+      <li class="vcard rv">
+        <svg class="icon" aria-hidden="true"><use href="#i-award"/></svg>
+        <h3>ロイロ認定ティーチャーへの道も</h3>
+        <p>ロイロ認定ティーチャー取得のアドバイス・伴走対応。</p>
+        <a class="inline-link" href="https://help.loilonote.app/--5fb73ce4c189ec002000d405" target="_blank" rel="noopener noreferrer" aria-label="ロイロ認定ティーチャーについて（別タブで開きます）">
+          ロイロ認定ティーチャー
+          <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg>
+        </a>
+      </li>
+    </ul>
+
+    <div class="tools rv">
+      <h3>いっしょに使える道具たち</h3>
+      <ul class="chips">
+        <li class="chip">ロイロノート</li>
+        <li class="chip">ChatGPT</li>
+        <li class="chip">Google Workspace</li>
+        <li class="chip">マインクラフト教育版</li>
+        <li class="chip">地域フィールドワーク</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== JOIN ===================== -->
+<section class="join" id="join" aria-labelledby="join-h">
+  <div class="wrap">
+    <div class="rv">
+      <h2 id="join-h">まずは、のぞいてみませんか。</h2>
+      <p class="join-lead">どの校種、学生、教員でなくても参加可能。SNSグループは作らずメールアドレスのみでゆるく繋がる。</p>
+      <ul class="join-chips">
+        <li><svg class="icon" style="width:1em;height:1em" aria-hidden="true"><use href="#i-check"/></svg>校種不問</li>
+        <li><svg class="icon" style="width:1em;height:1em" aria-hidden="true"><use href="#i-check"/></svg>学生・教員以外もOK</li>
+        <li><svg class="icon" style="width:1em;height:1em" aria-hidden="true"><use href="#i-check"/></svg>SNSグループなし・メールだけ</li>
+      </ul>
+      <a class="btn btn-light" href="https://docs.google.com/forms/d/e/1FAIpQLSeit70rebNXdqDiX1lAzvrPUDZgjxNi13CZU8BAcSmiuJ1UHA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" aria-label="参加フォームを開く（別タブで開きます）">
+        参加フォームを開く
+        <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg>
+      </a>
+      <p class="note">Googleフォームが別タブで開きます</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MEMBERS ===================== -->
+<section id="members" aria-labelledby="members-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label">Core members</span>
+      <h2 class="sec-h" id="members-h">コアメンバー</h2>
+      <div class="bar"></div>
+    </div>
+
+    <ul class="mgrid">
+      <li class="mcard rv">
+        <span class="avatar"><img src="./assets/img/member-kubokawa.webp" width="560" height="571" loading="lazy" decoding="async" style="object-position:65% 52%" alt="久保川剛宏"></span>
+        <span class="role role-1">リーダー</span>
+        <div>
+          <h3 class="name">久保川 剛宏</h3>
+          <p class="affil">滋賀県立河瀬中学校高等学校・理科</p>
+        </div>
+        <div>
+          <span class="pills-cap">認定・受賞</span>
+          <ul class="pills">
+            <li>ロイロ認定ティーチャー</li>
+            <li>読売教育賞 優秀賞</li>
+            <li>日産リカジョ育成賞 奨励賞</li>
+            <li>ICT夢コンテスト 優良賞 等</li>
+          </ul>
+        </div>
+        <div class="foot">
+          <a class="txt-link" href="https://note.com/chai319" target="_blank" rel="noopener noreferrer" aria-label="久保川剛宏のnote（別タブで開きます）">
+            note を読む
+            <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg>
+          </a>
+        </div>
+      </li>
+
+      <li class="mcard rv">
+        <span class="avatar"><img src="./assets/img/member-nishimoto.webp" width="560" height="571" loading="lazy" decoding="async" style="object-position:35% 42%" alt="西本千晃"></span>
+        <span class="role role-2">副リーダー</span>
+        <div>
+          <h3 class="name">西本 千晃</h3>
+          <p class="affil">滋賀県立守山中学校高等学校・理科</p>
+        </div>
+        <div>
+          <span class="pills-cap">認定・活動</span>
+          <ul class="pills">
+            <li>ロイロ認定ティーチャー</li>
+            <li>東京学芸大学 高校探究プロジェクト 共創型授業研究</li>
+          </ul>
+        </div>
+        <div class="foot">
+          <ul class="pills soft"><li>シャーロックホームズ</li></ul>
+        </div>
+      </li>
+
+      <li class="mcard rv">
+        <span class="avatar"><img src="./assets/img/member-tokuchiyo.webp" width="560" height="571" loading="lazy" decoding="async" style="object-position:27% 40%" alt="徳千代太一"></span>
+        <span class="role role-3">スーパーバイザー</span>
+        <div>
+          <h3 class="name">徳千代 太一</h3>
+          <p class="affil">フリーランス</p>
+        </div>
+        <div>
+          <span class="pills-cap">認定・活動</span>
+          <ul class="pills">
+            <li>ロイロ認定イノベーター</li>
+            <li>共有ノートアドバイザー</li>
+            <li>LEG尼神 協働リーダー</li>
+          </ul>
+        </div>
+        <div class="foot">
+          <ul class="pills soft"><li>写真撮影が本業？</li></ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== NETWORK ===================== -->
+<section id="network" style="background:var(--paper)" aria-labelledby="network-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label">Network</span>
+      <h2 class="sec-h" id="network-h">連携LEG</h2>
+      <div class="bar"></div>
+    </div>
+    <!-- 連携先を追加するときは、この <ul> に <li> ごと <a class="ncard"> を複製してください -->
+    <ul class="ngrid">
+      <li class="rv">
+        <a class="ncard" href="https://legnagahama.my.canva.site/top" target="_blank" rel="noopener noreferrer" aria-label="LEG長浜のサイト（別タブで開きます）">
+          <span class="mark"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+          <span style="flex:1">
+            <span class="t">LEG長浜</span>
+            <span class="s">legnagahama.my.canva.site</span>
+          </span>
+          <svg class="icon go" aria-hidden="true"><use href="#i-out"/></svg>
+        </a>
+      </li>
+    </ul>
+    <p class="net-msg rv">
+      <svg class="icon" aria-hidden="true"><use href="#i-hand"/></svg>
+      連携しながら滋賀の教育を盛り上げていきます！
+    </p>
+  </div>
+</section>
+
+<!-- ===================== ACTIVITY ===================== -->
+<section id="activity" aria-labelledby="activity-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-label">Activity</span>
+      <h2 class="sec-h" id="activity-h">活動実績・レポート</h2>
+      <div class="bar"></div>
+    </div>
+
+    <ol class="tl">
+      <li class="tl-item rv">
+        <span class="tl-date">2025.10.13</span>
+        <h3>LEG長浜との合同 教育イベント（長浜バイオ大学）</h3>
+        <p>2025年10月13日(月・祝)午後、長浜バイオ大学においてLEG長浜と合同で教育イベントを実施しました。</p>
+      </li>
+
+      <li class="tl-item rv">
+        <span class="tl-date">2024.10.03</span>
+        <h3>ギガSHIGA輝く河瀬ICTカフェ</h3>
+        <p>LEG彦根のローンチイベント。ロイロノート・Canva・ChatGPT を触りながら、対話をメインに教育について考えました。</p>
+        <div class="tl-card">
+          <ul class="pills">
+            <li>ローンチイベント</li>
+            <li>対話メイン</li>
+            <li>ロイロノート</li>
+            <li>Canva</li>
+            <li>ChatGPT</li>
+          </ul>
+          <div class="flyer">
+            <img src="./assets/img/flyer-2024-10-03.webp" width="980" height="1247" loading="lazy" decoding="async"
+                 alt="ギガSHIGA輝く河瀬ICTカフェのフライヤー。教育関係者のためのICT活用対話イベント、10月3日(木)14:00〜16:55、河瀬高校図書館で開催。">
+          </div>
+          <p class="quote">
+            <svg class="icon" aria-hidden="true"><use href="#i-spark"/></svg>
+            ヨシツ！
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="ftr" id="footer">
+  <div class="wrap">
+    <div class="ftr-cta">
+      <h2>ゆるく、はなしにきてください。</h2>
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeit70rebNXdqDiX1lAzvrPUDZgjxNi13CZU8BAcSmiuJ1UHA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer" aria-label="参加フォームへ（別タブで開きます）">
+        参加フォームへ
+        <svg class="icon" aria-hidden="true"><use href="#i-out"/></svg>
+      </a>
+    </div>
+
+    <nav class="ftr-nav" aria-label="フッターナビゲーション">
+      <a href="#top">ホーム</a>
+      <a href="#news">お知らせ</a>
+      <a href="#about">LEG彦根とは？</a>
+      <a href="#value">活動内容</a>
+      <a href="#members">コアメンバー</a>
+      <a href="#network">連携LEG</a>
+      <a href="#activity">活動実績</a>
+    </nav>
+
+    <div class="ftr-bot">
+      <p class="ftr-brand">LEG彦根<small>Learning Ecosystem Group Hikone</small></p>
+      <p class="copy">&copy; <span id="yr">2026</span> LEG彦根</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mqDesk = window.matchMedia('(min-width: 900px)');
+
+  /* ---- current year ---- */
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- mobile nav ---- */
+  var nav = document.getElementById('nav');
+  var tgl = document.getElementById('navToggle');
+
+  function syncNav(){
+    if (mqDesk.matches) { nav.hidden = false; document.body.style.overflow = ''; tgl.setAttribute('aria-expanded','false'); }
+    else if (tgl.getAttribute('aria-expanded') !== 'true') { nav.hidden = true; }
+  }
+  function openNav(){
+    nav.hidden = false; tgl.setAttribute('aria-expanded','true');
+    tgl.setAttribute('aria-label','メニューを閉じる');
+    document.body.style.overflow = 'hidden';
+    var first = nav.querySelector('a'); if (first) first.focus();
+  }
+  function closeNav(focusBack){
+    tgl.setAttribute('aria-expanded','false');
+    tgl.setAttribute('aria-label','メニューを開く');
+    document.body.style.overflow = '';
+    if (!mqDesk.matches) nav.hidden = true;
+    if (focusBack) tgl.focus();
+  }
+  tgl.addEventListener('click', function(){
+    tgl.getAttribute('aria-expanded') === 'true' ? closeNav(false) : openNav();
+  });
+  nav.addEventListener('click', function(e){
+    if (e.target.closest('a') && !mqDesk.matches) closeNav(false);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && tgl.getAttribute('aria-expanded') === 'true') closeNav(true);
+  });
+  mqDesk.addEventListener('change', syncNav);
+  syncNav();
+
+  /* ---- header shrink (rAF throttled) ---- */
+  var hdr = document.getElementById('hdr'), ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      hdr.classList.toggle('is-scrolled', window.scrollY > 24);
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---- reveal on scroll ---- */
+  var rv = document.querySelectorAll('.rv');
+  if (reduce || !('IntersectionObserver' in window)) {
+    rv.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        var sibs = Array.prototype.slice.call(en.target.parentNode.children);
+        var i = Math.min(sibs.indexOf(en.target), 4);
+        en.target.style.transitionDelay = (i * 60) + 'ms';
+        en.target.classList.add('in');
+        io.unobserve(en.target);
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---- scroll spy ---- */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && secs.length) {
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        links.forEach(function(a){
+          a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id);
+        });
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(function(s){ spy.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

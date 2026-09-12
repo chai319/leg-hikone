@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LEG彦根">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E7C6B"/>
+      <stop offset="1" stop-color="#2DD4A7"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#06211D"/>
+  <path d="M32 12c7.2 0 13 5.6 13 12.6 0 8.6-9.4 16-13 23.4-3.6-7.4-13-14.8-13-23.4C19 17.6 24.8 12 32 12Z" fill="url(#g)"/>
+  <circle cx="32" cy="24.4" r="5.2" fill="#06211D"/>
+  <text x="32" y="59" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#7DE8D0">LEG</text>
+</svg>
